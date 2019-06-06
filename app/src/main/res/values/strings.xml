@@ -1,4 +1,6 @@
 <resources>
     <string name="app_name">jeu_de_piste</string>
     <string name="title_activity_maps">Map</string>
+    <string name="title_activity_game">GameActivity</string>
+    <string name="valider">Valider</string>
 </resources>
