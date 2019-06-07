@@ -16,13 +16,12 @@
         tools:layout_editor_absoluteY="652dp"
         tools:ignore="MissingConstraints" />
 
-    <LinearLayout
-        android:layout_width="395dp"
-        android:layout_height="636dp"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="8dp"
-        tools:ignore="MissingConstraints">
-
-    </LinearLayout>
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:text="@string/textview"
+        tools:layout_editor_absoluteX="197dp"
+        tools:layout_editor_absoluteY="309dp"
+        tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>
