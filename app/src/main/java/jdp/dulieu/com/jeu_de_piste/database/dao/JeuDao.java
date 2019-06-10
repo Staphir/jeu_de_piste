@@ -1,5 +1,6 @@
 package jdp.dulieu.com.jeu_de_piste.database.dao;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
@@ -12,13 +13,16 @@ import jdp.dulieu.com.jeu_de_piste.database.entity.JeuEntity;
 @Dao
 public interface JeuDao {
     @Query("SELECT * FROM JeuEntity")
-    List<JeuEntity> getAll();
+    LiveData<List<JeuEntity>> getAll();
 
     @Query("SELECT * FROM JeuEntity WHERE jeu_id IN (:jIds)")
-    List<JeuEntity> loadAllByIds(int[] jIds);
+    LiveData<List<JeuEntity>> loadAllByIds(int[] jIds);
 
     @Insert
     void insertAll(JeuEntity... jeux);
+
+    @Insert
+    void insert(JeuEntity jeu);
 
     @Delete
     void delete(JeuEntity jeu);

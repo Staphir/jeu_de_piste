@@ -15,16 +15,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".QuestionActivity"></activity>
+        <activity android:name=".TeamActivity" />
         <activity
             android:name=".GameActivity"
             android:label="@string/title_activity_game"
-            android:parentActivityName=".MenuActivity"
+            android:parentActivityName=".HomeActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="jdp.dulieu.com.jeu_de_piste.MenuActivity" />
+                android:value="jdp.dulieu.com.jeu_de_piste.HomeActivity" />
         </activity>
-        <activity android:name=".MenuActivity">
+        <activity android:name=".HomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,7 +50,7 @@
 
         <activity
             android:name=".MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
     </application>
 
 </manifest>
