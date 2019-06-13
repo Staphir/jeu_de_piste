@@ -7,16 +7,20 @@
     android:layout_height="match_parent"
     tools:context="jdp.dulieu.com.jeu_de_piste.HomeActivity">
 
-    <include layout="@layout/content_menu" />
-
-    <Button
-        android:id="@+id/validate_button"
-        android:layout_width="wrap_content"
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/valider"
-        android:visibility="visible"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="285dp"
-        tools:layout_editor_absoluteY="652dp" />
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <include layout="@layout/content_menu" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

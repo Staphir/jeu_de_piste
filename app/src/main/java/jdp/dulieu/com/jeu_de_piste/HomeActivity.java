@@ -3,10 +3,10 @@ package jdp.dulieu.com.jeu_de_piste;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -22,7 +22,6 @@ public class HomeActivity extends AppCompatActivity {
 
     public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
 
-    private Button validate_button;
 
     private JeuViewModel jeuViewModel;
 
@@ -30,6 +29,9 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final JeuListAdapter adapter = new JeuListAdapter(this);
@@ -49,8 +51,8 @@ public class HomeActivity extends AppCompatActivity {
                 adapter.setJeux(jeux);
             }
         });
-        validate_button = (Button) findViewById(R.id.validate_button);
-        validate_button.setOnClickListener(new View.OnClickListener() {
+
+        recyclerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 openGameActivity();
