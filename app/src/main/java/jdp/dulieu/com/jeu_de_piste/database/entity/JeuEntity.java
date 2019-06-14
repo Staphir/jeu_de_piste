@@ -9,7 +9,7 @@ import androidx.room.PrimaryKey;
 public class JeuEntity {
 
     @PrimaryKey(autoGenerate = true)
-    public int jeu_id;
+    public Integer jeu_id;
 
     @ColumnInfo(name = "nom")
     @NonNull
@@ -17,7 +17,7 @@ public class JeuEntity {
 
     public JeuEntity(@NonNull String nom){this.nom = nom;}
 
-    public int getJeu_id() {
+    public Integer getJeu_id() {
         return jeu_id;
     }
 

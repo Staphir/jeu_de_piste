@@ -51,8 +51,11 @@ public class JeuListAdapter extends RecyclerView.Adapter<JeuListAdapter.JeuViewH
         notifyDataSetChanged();
     }
 
+
     @Override
     public int getItemCount() {
         return jeux.size();
     }
+
+    public String getJeu(int position){ return jeux.get(position).getNom(); }
 }

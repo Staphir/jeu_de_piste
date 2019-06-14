@@ -1,16 +1,20 @@
 package jdp.dulieu.com.jeu_de_piste;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
@@ -25,15 +29,24 @@ public class HomeActivity extends AppCompatActivity {
 
     private JeuViewModel jeuViewModel;
 
+    private String teamName;
+    private String gameName;
+    private Integer typeTeam;
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        teamName = new String("");
+        gameName = new String("");
+        typeTeam = 0;
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        final RecyclerView recyclerView = findViewById(R.id.recyclerview);
         final JeuListAdapter adapter = new JeuListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -52,15 +65,33 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
-        recyclerView.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton fab = findViewById(R.id.fab);
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openGameActivity();
+            public void onClick(View view) {
+                if(!teamName.equals("") && !gameName.equals("") && typeTeam!=0){
+                    openGameActivity();
+                }
             }
         });
+
+        recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
+            @Override
+            public void onClick(View view, int position) {
+
+                gameName = adapter.getJeu(position);
+
+            }
+
+            @Override
+            public void onLongClick(View view, int position) {
+
+            }
+        }));
     }
 
-    protected void openGameActivity(){
+    public void openGameActivity(){
+
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
     }

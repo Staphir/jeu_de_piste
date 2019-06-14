@@ -18,7 +18,7 @@ public class JdpRepository {
     public JdpRepository(Application application) {
         AppRoomDatabase db = AppRoomDatabase.getAppDatabase(application);
         jeuDao = db.jeuDao();
-        allJeux = jeuDao.getAll();
+        allJeux = jeuDao.getAllJeu();
     }
 
     public LiveData<List<JeuEntity>> getAllJeux() {

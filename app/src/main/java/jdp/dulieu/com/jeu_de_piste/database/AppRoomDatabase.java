@@ -77,9 +77,11 @@ public abstract class AppRoomDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
             // Start the app with a clean database every time.
             // Not needed if you only populate on creation.
-            jeuDao.deleteAll();
+            jeuDao.deleteAllJeu();
 
-            JeuEntity jeu = new JeuEntity("Bordeaux2019");
+            JeuEntity jeuBordeaux2019 = new JeuEntity("Bordeaux2019");
+            jeuDao.insert(jeuBordeaux2019);
+            JeuEntity jeu = new JeuEntity("Test");
             jeuDao.insert(jeu);
 
             return null;
