@@ -1,9 +1,13 @@
 package jdp.dulieu.com.jeu_de_piste;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
@@ -24,14 +28,18 @@ import jdp.dulieu.com.jeu_de_piste.viewmodel.JeuViewModel;
 
 public class HomeActivity extends AppCompatActivity {
 
-    public static final int NEW_WORD_ACTIVITY_REQUEST_CODE = 1;
-
-
     private JeuViewModel jeuViewModel;
 
     private String teamName;
     private String gameName;
     private Integer typeTeam;
+
+    private TextView homeText;
+    private EditText inputTextTeam;
+
+    private View viewSelected;
+    private Drawable drawableBlue;
+    private Drawable drawableYellow;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
@@ -39,9 +47,14 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        teamName = new String("");
-        gameName = new String("");
+        teamName = "";
+        gameName = "";
         typeTeam = 0;
+
+        homeText = findViewById(R.id.homeTexteView);
+        inputTextTeam = findViewById(R.id.nomEquipeInput);
+
+        viewSelected = new View(this);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -50,6 +63,14 @@ public class HomeActivity extends AppCompatActivity {
         final JeuListAdapter adapter = new JeuListAdapter(this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+//        final RecyclerView recyclerViewTeam = findViewById(R.id.recyclerviewteam);
+//        final JeuListAdapter adapterTeam = new JeuListAdapter(this);
+//        recyclerViewTeam.setAdapter(adapterTeam);
+//        recyclerViewTeam.setLayoutManager(new LinearLayoutManager(this));
+//       final RecyclerView recyclerViewUnder = findViewById(R.id.recyclerviewunder);
+//        final TeamListAdapter adapterTeam = new TeamListAdapter(this);
+//        recyclerViewUnder.setAdapter(adapterTeam);
+//        recyclerViewUnder.setLayoutManager(new LinearLayoutManager(this));
 
         // Get a new or existing ViewModel from the ViewModelProvider.
         jeuViewModel = ViewModelProviders.of(this).get(JeuViewModel.class);
@@ -69,25 +90,46 @@ public class HomeActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(!teamName.equals("") && !gameName.equals("") && typeTeam!=0){
+                teamName = inputTextTeam.getText().toString();
+                //gameName = [champs de texte];
+                Toast.makeText(getApplicationContext(),teamName,Toast.LENGTH_LONG).show();
+                if(!teamName.equals("") && !gameName.equals("")){
                     openGameActivity();
                 }
             }
         });
 
+        //touch on recycle view
         recyclerView.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerView, new RecyclerTouchListener.ClickListener() {
             @Override
             public void onClick(View view, int position) {
-
-                gameName = adapter.getJeu(position);
-
+                if(viewSelected != null){
+                    view.setBackgroundResource(R.color.colorHollow);
+//                    viewSelected.setBackground(drawableBlue);
+                }
+//                view.setBackground(drawableYellow);
+                view.setBackgroundResource(R.color.colorSelection);
+                viewSelected = view;
             }
-
             @Override
             public void onLongClick(View view, int position) {
 
             }
         }));
+
+        //touch on under recycle view
+//        recyclerViewTeam.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerViewTeam, new RecyclerTouchListener.ClickListener() {
+//            @Override
+//            public void onClick(View view, int position) {
+//
+//                typeTeam = position;
+//
+//            }
+//            @Override
+//            public void onLongClick(View view, int position) {
+//
+//            }
+//        }));
     }
 
     public void openGameActivity(){

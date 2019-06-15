@@ -58,4 +58,12 @@ public class JeuListAdapter extends RecyclerView.Adapter<JeuListAdapter.JeuViewH
     }
 
     public String getJeu(int position){ return jeux.get(position).getNom(); }
+
+    public String getTypeTeam(int position){ return jeux.get(position).getNom(); }
+
+    public Integer getNbTeam(int position){return jeux.get(position).getNbTeam(); }
+
+    public void changeBackground(int position){
+
+    }
 }

@@ -15,7 +15,14 @@ public class JeuEntity {
     @NonNull
     private String nom;
 
-    public JeuEntity(@NonNull String nom){this.nom = nom;}
+    @ColumnInfo(name = "nbTeam")
+    @NonNull
+    private Integer nbTeam;
+
+    public JeuEntity(@NonNull String nom, @NonNull Integer nbTeam){
+        this.nom = nom;
+        this.nbTeam = nbTeam;
+    }
 
     public Integer getJeu_id() {
         return jeu_id;
@@ -28,5 +35,10 @@ public class JeuEntity {
 
     public void setNom(@NonNull String nom) {
         this.nom = nom;
+    }
+
+    @NonNull
+    public Integer getNbTeam() {
+        return nbTeam;
     }
 }

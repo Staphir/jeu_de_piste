@@ -68,9 +68,11 @@ public abstract class AppRoomDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         private final JeuDao jeuDao;
+        private final TeamDao teamDao;
 
         PopulateDbAsync(AppRoomDatabase db) {
             jeuDao = db.jeuDao();
+            teamDao = db.teamDao();
         }
 
         @Override
@@ -79,9 +81,9 @@ public abstract class AppRoomDatabase extends RoomDatabase {
             // Not needed if you only populate on creation.
             jeuDao.deleteAllJeu();
 
-            JeuEntity jeuBordeaux2019 = new JeuEntity("Bordeaux2019");
+            JeuEntity jeuBordeaux2019 = new JeuEntity("Bordeaux 2019",2);
             jeuDao.insert(jeuBordeaux2019);
-            JeuEntity jeu = new JeuEntity("Test");
+            JeuEntity jeu = new JeuEntity("Test",3);
             jeuDao.insert(jeu);
 
             return null;

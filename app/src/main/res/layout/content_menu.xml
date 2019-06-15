@@ -10,10 +10,10 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
-        android:background="@android:color/darker_gray"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/under_recycler_view"
-        android:paddingTop="10dp"/>
+        android:paddingTop="150dp"
+        tools:layout_editor_absoluteY="50dp"
+        tools:listitem="@layout/recyclerview_item" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
