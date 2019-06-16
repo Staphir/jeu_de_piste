@@ -22,7 +22,7 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamVi
 
         private TeamViewHolder(View itemView){
             super(itemView);
-            teamItemView = itemView.findViewById(R.id.textViewTeam);
+            teamItemView = itemView.findViewById(R.id.textView);
         }
     }
 
@@ -37,7 +37,7 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamVi
     @NonNull
     @Override
     public TeamViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = mInflater.inflate(R.layout.recyclerviewteam_item, parent, false);
+        View itemView = mInflater.inflate(R.layout.recyclerview_item, parent, false);
         return new TeamViewHolder(itemView);
     }
 

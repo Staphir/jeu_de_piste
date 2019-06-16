@@ -33,14 +33,14 @@
         android:textSize="16sp"
         android:textStyle="bold" />
 
+    <include layout="@layout/content_menu" />
+
     <EditText
         android:id="@+id/nomEquipeInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="120dp"
         android:inputType="text" />
-
-    <include layout="@layout/content_menu" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
