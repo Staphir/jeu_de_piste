@@ -98,6 +98,7 @@ public class HomeActivity extends AppCompatActivity {
                 view.findViewById(R.id.textView).setBackgroundResource(R.color.colorSelection);
                 viewSelected = view;
                 gameName = adapter.getJeu(position);
+                typeTeam = adapter.getNbTeam(position);
             }
             @Override
             public void onLongClick(View view, int position) {
@@ -123,6 +124,11 @@ public class HomeActivity extends AppCompatActivity {
     public void openTeamActivity(){
 
         Intent intent = new Intent(this, TeamActivity.class);
-        startActivity(intent);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("nbTeam", typeTeam.toString());
+        intent.putExtras(bundle);
+
+        startActivity(intent,bundle);
     }
 }

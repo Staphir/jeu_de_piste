@@ -18,12 +18,16 @@ public class JdpRepository {
     public JdpRepository(Application application) {
         AppRoomDatabase db = AppRoomDatabase.getAppDatabase(application);
         jeuDao = db.jeuDao();
-        allJeux = jeuDao.getAllJeu();
+        allJeux = jeuDao.getAllJeux();
     }
 
     public LiveData<List<JeuEntity>> getAllJeux() {
         return allJeux;
     }
+
+//    public List<JeuEntity> getJeuxEntity() {
+//        return
+//    }
 
     public void insert(JeuEntity jeu){
         new insertAsyncTask(jeuDao).execute(jeu);

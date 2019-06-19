@@ -10,26 +10,20 @@ import java.util.List;
 import jdp.dulieu.com.jeu_de_piste.database.JdpRepository;
 import jdp.dulieu.com.jeu_de_piste.database.entity.JeuEntity;
 
-public class JeuViewModel extends AndroidViewModel {
+public class TeamViewModel extends AndroidViewModel {
 
     private JdpRepository jdpRepository;
     private LiveData<List<JeuEntity>> alljeux;
 
-    public JeuViewModel (Application application) {
+    public TeamViewModel(Application application){
         super(application);
         jdpRepository = new JdpRepository(application);
         alljeux = jdpRepository.getAllJeux();
     }
 
-    public LiveData<List<JeuEntity>> getAllJeux() {
+    public LiveData<List<JeuEntity>> getAlljeux(){
         return alljeux;
     }
 
-    void insert(JeuEntity jeu) {
-        jdpRepository.insert(jeu);
-    }
 
-//    public LiveData<List<String>> getTeamsList(int position){
-//
-//    }
 }

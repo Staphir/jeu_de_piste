@@ -13,7 +13,7 @@ import jdp.dulieu.com.jeu_de_piste.database.entity.JeuEntity;
 @Dao
 public interface JeuDao {
     @Query("SELECT * FROM jeu_table")
-    LiveData<List<JeuEntity>> getAllJeu();
+    LiveData<List<JeuEntity>> getAllJeux();
 
     @Query("SELECT * FROM jeu_table WHERE jeu_id IN (:jIds)")
     LiveData<List<JeuEntity>> loadAllByIds(int[] jIds);
