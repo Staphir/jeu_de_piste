@@ -105,20 +105,6 @@ public class HomeActivity extends AppCompatActivity {
 
             }
         }));
-
-        //touch on under recycle view
-//        recyclerViewTeam.addOnItemTouchListener(new RecyclerTouchListener(this, recyclerViewTeam, new RecyclerTouchListener.ClickListener() {
-//            @Override
-//            public void onClick(View view, int position) {
-//
-//                typeTeam = position;
-//
-//            }
-//            @Override
-//            public void onLongClick(View view, int position) {
-//
-//            }
-//        }));
     }
 
     public void openTeamActivity(){
